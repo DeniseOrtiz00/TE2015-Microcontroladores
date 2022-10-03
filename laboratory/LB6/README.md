@@ -13,7 +13,7 @@ As of this laboratory, we will develop code to drive different peripherals and c
 * Implement a sweeping routine to acquire 16 data values from a 4x4 keypad using 8 input/output pins.
 * To know the function and interactions between the pull-up resistor and input/output ports of a device. 
 
-### **LAB PROCEDURE**
+## **INTRODUCTION**
 Pull-up resistors are used to temporarily force the voltage of a node to a know value, such as V<sub>CC</sub>. This is due to the open-circuit voltage as seen from the node itself (see left side of the figure below). Once a switch short-circuits such node to GND, the node is consequently forced to a 0 V value. From the digital logic perspective, we can state that when the switch is open, the node (thus the &mu;C input pin in the figure below) has a logic 1, and when the switch is closed (button pressed), the node and the input pin have a logic 0.
 <div align="center">
 <img src="img/pullups1.png">
@@ -66,16 +66,18 @@ D  | Row 4 `[ 1110 ]` | Column 4 `[ 1110 ]`
 
 </div>
 
+## **LAB PROCEDURE**
+
 1. Create a new C project named __LB6.X__ for the PIC18F57Q43 device.
 
-2. Use MPLAB X's Code Configurator to set the following: 
+2. Use MPLAB X's Code Configurator to configure your project as follows: 
    * HFINTOSC at 4 MHz with a divider of 4.
    * Pins RF0, RF1, RF2 and RF3 as outputs. Name these pins KRO1 through KRO4, respectively.
    * Pins RF4, RF5, RF6 and RF7 as inputs. Name these pins KCI1 through KCI4, respectively.
    * Port B as an output. Name pins 0 through 6 as SEG_A, SEG_B,..., SEG_G, respectively, and Pin 7 as SEG_P. 
    * Port C, pins 0 through 3 as outputs. Name these pins as DIG_1 through DIG_4, respectively.
 
-3. Then, function `char_to_seg()` is a 8-bit value to 7-segment encoder. This means it converts the four least-significant bits of an 8-bit binary value stored in a `uint8_t` variable, into an 8-bit value corresponding to the 7-segment codification, stored in a `uint8_t` variable. [Use the BCD to 7-segment encoding table](7-seg_encoding.md) as a reference. Add this function to your `main.c` file.
+3. The function `char_to_seg()` is a 8-bit value to 7-segment encoder. This means it converts the four least-significant bits of an 8-bit binary value stored in a `uint8_t` variable, into an 8-bit value corresponding to the 7-segment codification, stored in a `uint8_t` variable. [Use the BCD to 7-segment encoding table](7-seg_encoding.md) as a reference. Add this function to your `main.c` file.
 
 ```C
 uint8_t char_to_seg(uint8_t num){
@@ -102,7 +104,7 @@ uint8_t char_to_seg(uint8_t num){
 }
 ```
 
-4. Function `send_to_disp()` breaks down a 32-bit word (`uint32_t`) containing four 8-bit binary numbers (`0x01 + 0x02 + 0x03 + 0x04`), encodes each 8-bit digit by calling `char_to_seg()`, and sends each encoded byte to the 7-segment display. The 32-bit variable is composed by four 8-bit variables, each containing the digit to be desplayed at the 4-digit display (i.e., a value of `0xA8E2` shows `A8E2` on the display). Add this function as well to your `main.c` file.
+4. Function `send_to_disp()` breaks down a 32-bit word (`uint32_t`) containing four 8-bit binary numbers (`0x01 + 0x02 + 0x03 + 0x04`), encodes each 8-bit digit by calling `char_to_seg()`, and sends each encoded byte to the 7-segment display. The 32-bit variable is composed by four 8-bit variables, each containing the digit to be desplayed by the 4-digit display (i.e., a value of `0xA8E2` shows `A8E2` on the display). Add this function as well to your `main.c` file.
 
 ```C
 void send_to_disp(uint32_t disp_word){
@@ -117,7 +119,7 @@ void send_to_disp(uint32_t disp_word){
 }
 ```
 
-5. Finally, the main function, `main(void)` calls for `key_scanner()` and displays the read value through `send_to_disp()`.
+5. Finally, the main function, `main(void)` displays the value on the 32-bit variable `num` on the 7-segment display through `send_to_disp()`.
 
 ```C
 void main(void) {
@@ -125,32 +127,31 @@ void main(void) {
     SYSTEM_Initialize();
    
     while (1){
-        uint32_t num = 0x01020304;
-        send_to_disp(key);
+        uint32_t num = 0x0A0B0C0D;
+        send_to_disp(num);
     }
 }
 ```
 
-6. We also need to include `stdint.h` and `math.h`. A `#define` directive is used to assign a value of 10 to `SWEEP_FREQ`, used by `key_scanner()`, and all user-defined functions in the code must also be declared:
+6. We also need to include `stdint.h` and `math.h`. A `#define` directive is used to assign a value of 1000 to `SWEEP_FREQ`, to use a 1000 ms delay by `send_to_disp()`. Finally, all user-defined functions in the code must also be declared:
 ```C
 #include "mcc_generated_files/mcc.h"
 #include <stdint.h>
 #include <math.h>
 
-#define SWEEP_FREQ 10
+#define SWEEP_FREQ 1000
 
 uint8_t char_to_seg(uint8_t);
 void    send_to_disp(uint32_t);
-uint8_t key_scanner(void);
 ```
 
-7. With this base code, program your device and observe what is displayed. As you will see, each digit is turned on in a sequence (right to left) each time step paced by `SWEEP_FREQ`, while the rest remains off. This way, instead of using 8 pins (7 segments and decimal dot) + 1 pin (enable) to drive one 1-digit display in parallel (which would add up to 36 pins for four digits), we miltiplex the outputs to enable only one digit each time and assign the corresponding value to that digit using the same 8 segment bits for all four digits. This is common practice to drive 7-segment displays using &mu;Cs, FPGAs and other devices. To be able to see all digits _"on"_ at the same time, the sweeping frequency should be high enough, such as the human eye cannot detect when the segments turn off. 
+7. With this base code, program your device and observe what is displayed. As you will see, each digit is turned on in a sequence (left to right) each time step paced by `SWEEP_FREQ`, while the rest remains off. This way, instead of using 8 pins (7 segments and decimal dot) + 1 pin (enable) to drive one 1-digit display in parallel (which would add up to 36 pins for four digits), we miltiplex the outputs to enable only one digit each time and assign the corresponding value to that digit using the same 8 segment bits for all four digits. This is common practice to drive 7-segment displays using &mu;Cs, FPGAs and other devices. To be able to see all digits _"on"_ at the same time, the sweeping frequency should be high enough, such as the human eye cannot detect when the segments turn off. 
       
-8. Reduce the value of the macro `SWEEP_STEP` to a step value where you consider the four digits are displayed at the same time. Report this value.
+8. Reduce the value of the macro `#define SWEEP_STEP` to a step value where you consider the four digits are displayed at the same time and report this value.
       
-9. Change the value of the `num` variable to display the numbers A, B, C and D instead of those displaying from the original project. Consider this should be in BCD format for numbers between 0x0 and 0xF. Show the displayed numbers in your report.
+9. Change the value of the `num` variable to display the numbers 1, 2, 3 and 4 instead of those displaying from the original project. Consider this should be in BCD format for numbers between 0x0 and 0xF. Show the displayed numbers in your demostrative video.
 
-10. Write the function `uint8_t key_scanner()` to scan for a pressed key on the keypad. Your function must fulfill the following requirements:
+10. Write the function `key_scanner()` to scan for a pressed key on the keypad. Your function must fulfill the following requirements:
 
    * Sweep each keypad row from top to bottom (bits `0` through `3` of **Port F**, configured as **outputs**)
    * Scan the columns from left to right (bits `4` to `7` of **Port F** configured as **inputs**) to detect for a pressed key
@@ -170,7 +171,22 @@ _Note: since the keypad has hard-wired _*pull-up*_ resistors tying column inputs
 12. Test your driver on the Curiosity board and record a demonstrative video presenting the display as it shows the corresponding digits as the keys on the keypad are pressed. 
 
 ## Deliverables
-Record a 5-minute video showing your solution of the keypad driver on your expansion board. Include the following:
+
+1. __[60%]__ Demostrative Video 
+Record a 5-minute video showing your solution of the keypad driver on your expansion board; that is, items 8, 9, 10 and 11 from the laboratory procedure. Include the following:
    1. Explain how the function `send_to_disp()` works
    2. Explain how the function `char_to_seg()` works
    3. Explain how your function `key_scanner()` works
+
+2. __[40%]__ MPLAB X project
+   * Push your complete MPLAB project folder on a GitHub repository.
+   * __Each line of your `key_scanne()` function must be commented to explain what each line does__ so it can be easily understood by others.
+   * __Do not compress the project folder.__ You must directly push the full project folder and files in their original format using Git.
+   * Share the link to your LB6 repository on the comments section of your video post page. Consider that on Canvas it will only be allowed one external link entry, thus no other way of reporting your work is possible. __Make sure to set your video as _Private_, so only people with the link to it can watch it.__
+
+The due date for LB5 is __Monday, October 10__. Submit your solution:
+
+<div align="center">
+
+[![Generic badge](https://img.shields.io/badge/LB6-Click_here_to_submit-blue.svg?style=flat&logo=appveyor)](https://experiencia21.tec.mx/courses/286463/assignments/9678303)
+</div>
