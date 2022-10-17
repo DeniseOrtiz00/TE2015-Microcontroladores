@@ -4,8 +4,15 @@
 
 # **LB7. GPIO: 16x2 Liquid Crystal Display**
 
+## **OBJECTIVES**
+In this laboratory you will write code to drive a two-line, 16 character per line, liquid crystal display. You will start by programming a ready-to-go hex file to test the proper fuctioning of the LCD on your expansion board. Then, you will develop the C driver for your display and display the student numbers of each team member. Finally, you will integrate the LCD driver and the keypad driver you developed in a previous laboratory to create a calculator project. 
+
+* Develop a driver for a 16x2 LCD display 
+* Test the LCD on your expansion board by displaying a dummy message
+* Develop a calculator firmware using the LCD and the 4x4 matrix keypad
+
 ## **INTRODUCTION**
-In this laboratory you will write code to drive a two-line, 16 character per line, liquid crystal display. To do this, the display uses an 8-bit **DATA** port that receives both commands and characters (ASCII-coded) in parallel. Also, to select between sending commands or characters, the line **Register Select** pin is used. Finally, the **Enable** signal is used to enable/disable the display to receive/send control and data through the described pins. On your expansion board, the 8-bit DATA port of the LCD display is wired to PORT `RD[7:0]` of the microcontroller, the Register Select is connected to `RE0`, and the Enable is connected to `RE1`. An additional line `Read/Write` is available; however, we will only use the `Write` mode, thus the line is hardwired to ground. 
+The liquid crystal display incorporates an integrated circuit (HD44780) that processes the information received from the host (in our case, the PIC18F57Q43). The HD44780 processes both commands and characters and the processing mode (between commands or characters) is selected through the __Register Select__, `RS` input of the LCD. While in command mode (i.e., `RS=0`) the HD44780 can execute instructions such as _Clear Display_, _Return Home_, and some others. The full list of commands can be found on page 24 of the [HD44778 datasheet](../../datasheets/HD44780U.pdf). Whereas in character mode (i.e., `RS=1`) the information received should be an ASCII-coded character that is then displayed. The characteres that can be displayed are listed on pages 17 and 18 of the datasheet. Both commands and characters are transfered in parallel through an 8-bit __Data__, `DA[7:0]` port. The __Enable__, `E` signal is used to enable/disable the display to receive/send commands and characters through the Data port. On your expansion board, the 8-bit DATA port of the LCD display is wired to PORT `RD[7:0]` of the microcontroller, the Register Select is connected to `RE0`, and the Enable is connected to `RE1`. An additional line `Read/Write` is available; however, we will only use the `Write` mode, thus the line is hardwired to ground. 
 
 The device has 2 lines and 16 characters per line. The LCD pinout is shown below:
 
@@ -28,8 +35,6 @@ Pin number | Symbol | Level | I/O | Function
 13 | D6  | 0/1 | I/O | Databus line 6
 14 | D7  | 0/1 | I/O | Databus line 7
 </div>
-
-To drive the LCD display, you will communicate with an integrated circuit (HD44780) on the LCD side, which receives commands and characters from the host (PIC18F57Q43) and executes instructions such as _Clear Display_, _Return Home_, and some others. The list of commands that can be executed by an LCD display using the HD44780 controller are shown on page 24 of the [HD44778 datasheet](../../datasheets/HD44780U.pdf). 
 
 The LCD can be configured to drive the data bus either in a 4-bit mode or in an 8-bit mode. Either mode must be selected by the user in the initialization chain of the controller. If a 4-bit data bus is used, the LCD will require a total of 7 data lines (3 control lines + 4 data bus lines). Whereas the 8-bit data bus is chosen, the LCD requires 11 lines (3 control lines + 8 data bus lines). The three control lines are referred to as __E__, __RS__ and __R/W__. In this lab we will work with the 8-bit mode only.
 
@@ -95,12 +100,7 @@ void LCD_initialize(void){
 }
 ```
 
-## **OBJECTIVES**
-In this lab, you will start by programming a ready-to-go hex file to test the proper fuctioning of the LCD on your expansion board. Then, you will develop the C driver for your display and display the student numbers of each team member. Finally, you will integrate the LCD driver and the keypad driver you developed in a previous laboratory to create a calculator project. 
 
-* Develop a driver for a 16x2 LCD display 
-* Test the LCD on your expansion board by displaying a dummy message
-* Develop a calculator firmware using the LCD and the 4x4 matrix keypad
 
 ## **PROCEDURE**
 ### __EXERCISE 1. PRACTICE WITH THE SIMULATOR__
