@@ -2690,8 +2690,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 8:     T0CON0bits.MD16 = 1;
 [e = . . _T0CON0bits 0 1 -> -> 1 `i `uc ]
 "9
-[; ;main.c: 9:     T0CON0bits.OUTPS = 0x0;
-[e = . . _T0CON0bits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 9:     T0CON0bits.OUTPS = 0x1;
+[e = . . _T0CON0bits 0 0 -> -> 1 `i `uc ]
 "11
 [; ;main.c: 11:     T0CON1bits.CS = 0x2;
 [e = . . _T0CON1bits 0 2 -> -> 2 `i `uc ]
@@ -2699,8 +2699,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 12:     T0CON1bits.ASYNC = 0;
 [e = . . _T0CON1bits 0 1 -> -> 0 `i `uc ]
 "13
-[; ;main.c: 13:     T0CON1bits.CKPS = 0x1;
-[e = . . _T0CON1bits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 13:     T0CON1bits.CKPS = 0x0;
+[e = . . _T0CON1bits 0 0 -> -> 0 `i `uc ]
 "15
 [; ;main.c: 15:     RF3PPS = 0x39;
 [e = _RF3PPS -> -> 57 `i `uc ]

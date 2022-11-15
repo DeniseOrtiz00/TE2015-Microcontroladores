@@ -27,7 +27,7 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"3 C:\Users\vazqu\OneDrive - Instituto Tecnologico y de Estudios Superiores de Monterrey\courses\TE2015 Microcontroladores\timer_example.X\main.c
+"3 C:\Users\vazqu\OneDrive - Instituto Tecnologico y de Estudios Superiores de Monterrey\courses\TE2015 Microcontroladores\mplab\timer_example.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "10773 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-Q_DFP/1.13.211/xc8\pic\include\proc\pic18f57q43.h
 [v _RF3PPS RF3PPS `VEuc  1 e 1 @556 ]
@@ -95,7 +95,7 @@
 "48152
 "48152
 [v _TRISFbits TRISFbits `VES33  1 e 1 @1227 ]
-"3 C:\Users\vazqu\OneDrive - Instituto Tecnologico y de Estudios Superiores de Monterrey\courses\TE2015 Microcontroladores\timer_example.X\main.c
+"3 C:\Users\vazqu\OneDrive - Instituto Tecnologico y de Estudios Superiores de Monterrey\courses\TE2015 Microcontroladores\mplab\timer_example.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "18

@@ -28760,11 +28760,11 @@ void main(void) {
 
     T0CON0bits.EN = 1;
     T0CON0bits.MD16 = 1;
-    T0CON0bits.OUTPS = 0x0;
+    T0CON0bits.OUTPS = 0x1;
 
     T0CON1bits.CS = 0x2;
     T0CON1bits.ASYNC = 0;
-    T0CON1bits.CKPS = 0x1;
+    T0CON1bits.CKPS = 0x0;
 
     RF3PPS = 0x39;
 

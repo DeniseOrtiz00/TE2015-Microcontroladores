@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
-                                                                                               Fri Nov 11 20:45:07 2022
+                                                                                               Fri Nov 11 22:42:04 2022
 
 Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1 
      1                           	processor	18F57Q43
@@ -143,25 +143,25 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
    119   01FFD6  891A               	bsf	26,4,b	;volatile
    120   01FFD8                     
    121                           ; BSR set to: 3
-   122                           ;main.c: 9:     T0CON0bits.OUTPS = 0x0;
-   123   01FFD8  0EF0               	movlw	-16
-   124   01FFDA  171A               	andwf	26,f,b	;volatile
-   125                           
-   126                           ;main.c: 11:     T0CON1bits.CS = 0x2;
-   127   01FFDC  511B               	movf	27,w,b	;volatile
-   128   01FFDE  0B1F               	andlw	-225
-   129   01FFE0  0940               	iorlw	64
-   130   01FFE2  6F1B               	movwf	27,b	;volatile
-   131   01FFE4                     
-   132                           ; BSR set to: 3
-   133                           ;main.c: 12:     T0CON1bits.ASYNC = 0;
-   134   01FFE4  991B               	bcf	27,4,b	;volatile
-   135                           
-   136                           ;main.c: 13:     T0CON1bits.CKPS = 0x1;
-   137   01FFE6  511B               	movf	27,w,b	;volatile
-   138   01FFE8  0BF0               	andlw	-16
-   139   01FFEA  0901               	iorlw	1
-   140   01FFEC  6F1B               	movwf	27,b	;volatile
+   122                           ;main.c: 9:     T0CON0bits.OUTPS = 0x1;
+   123   01FFD8  511A               	movf	26,w,b	;volatile
+   124   01FFDA  0BF0               	andlw	-16
+   125   01FFDC  0901               	iorlw	1
+   126   01FFDE  6F1A               	movwf	26,b	;volatile
+   127                           
+   128                           ;main.c: 11:     T0CON1bits.CS = 0x2;
+   129   01FFE0  511B               	movf	27,w,b	;volatile
+   130   01FFE2  0B1F               	andlw	-225
+   131   01FFE4  0940               	iorlw	64
+   132   01FFE6  6F1B               	movwf	27,b	;volatile
+   133   01FFE8                     
+   134                           ; BSR set to: 3
+   135                           ;main.c: 12:     T0CON1bits.ASYNC = 0;
+   136   01FFE8  991B               	bcf	27,4,b	;volatile
+   137                           
+   138                           ;main.c: 13:     T0CON1bits.CKPS = 0x0;
+   139   01FFEA  0EF0               	movlw	-16
+   140   01FFEC  171B               	andwf	27,f,b	;volatile
    141                           
    142                           ;main.c: 15:     RF3PPS = 0x39;
    143   01FFEE  0E39               	movlw	57
@@ -777,10 +777,10 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
-Symbol Table                                                                                   Fri Nov 11 20:45:07 2022
+Symbol Table                                                                                   Fri Nov 11 22:42:04 2022
 
                      l13 FFF4                       l14 FFF4                      l692 FFD0  
-                    l694 FFD8                      l696 FFE4                     _main FFD0  
+                    l694 FFD8                      l696 FFE8                     _main FFD0  
                    start FFFC             ___param_bank 000000                    ?_main 0000  
         __initialization FFCA             __end_of_main FFFC                   ??_main 0000  
           __activetblptr 000000                   _RF3PPS 00022C                   isa$std 000001  
