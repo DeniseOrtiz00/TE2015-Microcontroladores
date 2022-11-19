@@ -12,7 +12,7 @@ This projects aims to serve as a foundation design of embedded system developmen
 ## __Project Description__
 The final goal of this project is to develop an application that uses your MCU as a server to communicate a digital signal to a host device; in this case, your personal computer. The digital signal to transmit is a string that contains the voltage value read from the sensor. The host does not transmit any data back to the server, so we only need a one-way communication channel; that is, the server only transmits (Tx) and host only receives (Rx).
 
-<p align="left">
+<p align="center">
   <img width=50%, src="img/schematic.png">
 </p>
 
