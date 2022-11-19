@@ -13,7 +13,7 @@ This projects aims to serve as a foundation design of embedded system developmen
 The final goal of this project is to develop an application that uses your MCU as a server to communicate a digital signal to a host device; in this case, your personal computer. The digital signal to transmit is a string that contains the voltage value read from the sensor. The host does not transmit any data back to the server, so we only need a one-way communication channel; that is, the server only transmits (Tx) and host only receives (Rx).
 
 <p align="left">
-  <img src="img/schematic.png">
+  <img width=50%, src="img/schematic.png">
 </p>
 
 You can use any analog sensor as soon as it can be powered by the Curiosity board's V<sub>TG</sub> power line (3.3 V<sub>DC</sub>). Some easily available sensors are optoresistors, thermistors, temperature, infrared, proximity, gas, humidity sensors, and many others. 
@@ -31,7 +31,7 @@ The wiring for the project is very simple. You just need to connect the analog o
 
 We will use a terminal emulator to display voltage readings on the host side. What this emulator will do is displaying the raw data as received from the server. This means that the strings you want to display must come in formatted under the UTF-8 coding format from the server, including the voltage readings. For this, you must convert the 12-bit voltage value from the ADC output to a floating point value and then, transform the numerical value to a string. 
 
-Once the wiring is done, you can test your setup by programming your MCU with [this file](TE2015_FINAL.X.production.hex), which carries out the ADC conversion and UART transmission using an analog input at RA0.
+Once the wiring is done, you can test your setup by programming your MCU with file [TE2015_FINAL.X.production.hex](TE2015_FINAL.X.production.hex), which carries out the ADC conversion and UART transmission using an analog input at RA0.
 
 ## _ADC OPERATION_
 The ADC outputs a 12-bit word that ranges from 0x000 ($0_{10}$) to 0xFFF ($4095_{10}$) which is proportional to the voltage reading at the analog input. From this value, you can determine the actual voltage value given at the analog input. For this, you must first determine the voltage value required to increment the ADC output in one step (e.g, from 0x000 to 0x001). Since the ADC has 12 bits of resolution, the total steps that the input signal is being divided by is
@@ -52,17 +52,17 @@ The operation of the UART peripheral on the PIC18 is very straightforward once i
 
     Record a demostrative video (_7 minutes maximum_) showing the following:
 
-    **The developed C code**
+    **Your solution's C code**
 
     1. ADC configuration. Explain the purpose of each register you used to configure the ADC
     2. UART configuration. Explain the purpose of each register you used to configure UART 
     3. Interrupts. Describe the interrupts you used in your solution and explain the interrupt service routines corresponding to each interrupt
     4. Formating. Explain the string formatting you used to transmit information over UART, including the procedure to determine the voltage value that is read from the analog sensor.
 
-    **The hardware setup**
+    **Hardware setup**
     1. Show your hardware setup including the analog sensor you used and its connection to the Curiosity board. Show additional connections such as LED indicators as well.
 
-    **The terminal emulator**
+    **Terminal emulator**
     1. Show the configuration of the terminal emulator on your computer. Baud rate, package size, parity stop bits and other relevant parameters must be shown.
     2. Show the terminal emulator on your computer as it displays the voltage readings being transmitted from the server. 
 
