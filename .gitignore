@@ -1,14 +1,6 @@
 reserved/
-laboratory/LB3/LB3.X
-laboratory/LB3/LB3_PIC18F45K50.X
-laboratory/LB4/LB4.X/
-laboratory/LB5/
-laboratory/LB6/
-laboratory/LB7/
 laboratory/LB8/
 laboratory/LB9/
 laboratory/LB10/
 laboratory/LB11/
-mplab/*
-!mplab/PIC18F4550_BSF.X
-!mplab/HW2.X
+mplab/TE2015_FINAL.X/
