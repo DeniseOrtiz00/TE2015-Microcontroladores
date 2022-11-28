@@ -1,0 +1,129 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"23 C:\Users\kdeni\Downloads\LCD.X-20221128T000929Z-001\LCD.X/lcd.h
+[v _Lcd_Port Lcd_Port `(v  1 e 1 0 ]
+"45
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+"54
+[v _lcd_clear lcd_clear `(i  1 e 2 0 ]
+"60
+[v _lcd_gotoxy lcd_gotoxy `(v  1 e 1 0 ]
+"81
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+"100
+[v _lcd_write_char lcd_write_char `(v  1 e 1 0 ]
+"116
+[v _lcd_putc lcd_putc `(v  1 e 1 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"88 C:\Users\kdeni\Downloads\LCD.X-20221128T000929Z-001\LCD.X\LCD.c
+[v _main main `(v  1 e 1 0 ]
+"4002 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"10469
+[v _RD2 RD2 `VEb  1 e 0 @31770 ]
+"10472
+[v _RD3 RD3 `VEb  1 e 0 @31771 ]
+"10475
+[v _RD4 RD4 `VEb  1 e 0 @31772 ]
+"10478
+[v _RD5 RD5 `VEb  1 e 0 @31773 ]
+"10481
+[v _RD6 RD6 `VEb  1 e 0 @31774 ]
+"10484
+[v _RD7 RD7 `VEb  1 e 0 @31775 ]
+"88 C:\Users\kdeni\Downloads\LCD.X-20221128T000929Z-001\LCD.X\LCD.c
+[v _main main `(v  1 e 1 0 ]
+{
+"109
+} 0
+"116 C:\Users\kdeni\Downloads\LCD.X-20221128T000929Z-001\LCD.X/lcd.h
+[v _lcd_putc lcd_putc `(v  1 e 1 0 ]
+{
+"118
+[v lcd_putc@i i `i  1 a 2 8 ]
+"116
+[v lcd_putc@a a `*.32uc  1 p 2 4 ]
+"121
+} 0
+"100
+[v _lcd_write_char lcd_write_char `(v  1 e 1 0 ]
+{
+[v lcd_write_char@a a `uc  1 a 1 wreg ]
+"102
+[v lcd_write_char@y y `uc  1 a 1 2 ]
+[v lcd_write_char@temp temp `uc  1 a 1 1 ]
+"100
+[v lcd_write_char@a a `uc  1 a 1 wreg ]
+"103
+[v lcd_write_char@a a `uc  1 a 1 3 ]
+"114
+} 0
+"81
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+{
+"98
+} 0
+"60
+[v _lcd_gotoxy lcd_gotoxy `(v  1 e 1 0 ]
+{
+[v lcd_gotoxy@a a `uc  1 a 1 wreg ]
+"62
+[v lcd_gotoxy@temp temp `uc  1 a 1 7 ]
+[v lcd_gotoxy@y y `uc  1 a 1 6 ]
+[v lcd_gotoxy@z z `uc  1 a 1 5 ]
+"60
+[v lcd_gotoxy@a a `uc  1 a 1 wreg ]
+[v lcd_gotoxy@b b `uc  1 p 1 3 ]
+"63
+[v lcd_gotoxy@a a `uc  1 a 1 4 ]
+"79
+} 0
+"54
+[v _lcd_clear lcd_clear `(i  1 e 2 0 ]
+{
+"58
+} 0
+"45
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+{
+[v Lcd_Cmd@a a `uc  1 a 1 wreg ]
+[v Lcd_Cmd@a a `uc  1 a 1 wreg ]
+"47
+[v Lcd_Cmd@a a `uc  1 a 1 2 ]
+"52
+} 0
+"23
+[v _Lcd_Port Lcd_Port `(v  1 e 1 0 ]
+{
+[v Lcd_Port@a a `uc  1 a 1 wreg ]
+[v Lcd_Port@a a `uc  1 a 1 wreg ]
+"25
+[v Lcd_Port@a a `uc  1 a 1 0 ]
+"44
+} 0
